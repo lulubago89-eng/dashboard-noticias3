@@ -1,11 +1,20 @@
 {
-  "generated_at": "2026-11-19T03:17:25.883196Z",
+  "generated_at": "2026-11-19T03:20:22.161385Z",
   "status": "ok",
   "sources_ok": 13,
   "sources_total": 13,
-  "new_articles": 97,
+  "new_articles": 99,
   "errors": [],
   "articles": [
+    {
+      "id": "5ef40a65c781696f0652502a",
+      "title": "Finanzas CDMX descartó un alza al predial por Programa Metropolitano - Imagen Radio",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOOHBmUFBjaXlHc0VBNWFPQmpJVEZwWjJhU1JhZUZpNG5Xek85ZFk4YVllWmxCVXRGWEZsOERzaWRyYlJIbUJ5SWRVNWlvOFBUVHBFbldTdnBzbURyaE1wa3pobEU5U29uUHNFRVp4RzYxdXpIbVd0Rk1WSUwxQV9VeHBrUF9vMzRPZFRCX2YyMGNGR29HVldmTldvd0lGTVpOSkNGWdIBqgFBVV95cUxPNk1VNjVzNkpuUFpidVdaQUNubmRJQ2VhWmpLbktBTXNTcG5lNFpPR1ZaT3hoNk1EV3BMTUZXNElmRTNYN0dQNUpTVEpYeXBiaHBMX0VYMVNYS3daZzdsYXJSM1ZLb3ZLNmg1Qm1iWEptYVJySEVqRzZKZnpXR1lidFdfc19ZbG02VG1zMi1pWUt1NllUYXVneC1sTXVvOU5BbU9iYlQ1SEhrdw?oc=5",
+      "source": "Imagen Radio",
+      "category": "Política",
+      "published_at": "2026-11-19T03:00:34Z",
+      "collected_at": "2026-11-19T03:20:22.161385Z"
+    },
     {
       "id": "561bd1ef2632f2e0d0983061",
       "title": "SpaceX’s December Lock-Up Frees Another 17% of Its Shares. Here’s What October’s Unlock Did to the Stock.",
@@ -2149,6 +2158,15 @@
       "collected_at": "2026-11-19T02:40:59.182388Z"
     },
     {
+      "id": "1c22d8effd0b0652c06c8b28",
+      "title": "Precios del petróleo suben en medio de escalada entre EU e Irán y temores de exceso de oferta - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNYWY1bHVpZ2J0TEVvdjM1OUJGR3hpaHl6VFdCM2VGSmVEb3pjWU83Q25lX21YSUY0eXptZ2RKT09iX0pTWjAxaDZLR3doMi1xSk5ib1hfbENrR3l5dXlZSjdJVHB0UllqNW1TMTBHSmU1QVB2QUo4M0RTY2pabkRNd01kTk5CaF93RTdqV1JFQlVZQk9PSEd2LVNOVG1yWnRXVHU1UElCN0laVEl4RVc5UFZXUnB4ZlpOMTNFQ0lSV1NGOWdlQXRJZzB1QdIB0AFBVV95cUxPbHZxRm5jX3Y2ZVZsMm5ZVGs5QUhvOXo1YTFrVUJndVVRMFptT3hMQUE5LUVWVWlwNVBsZjUzOUtVUEc1TENmSG1obDZZTTgtN1pNZGQ0VWNfTy1EbEVtYkE4aTdPVS1kRC1zSzZkYUFtQm1Gc1ZESWFjQzc3Sk9KM2xObDJoZkM4SUlybTY5WEJnQlpnVG9PS3lYb0FBb19oYnVyZEFhQUI4UnI5RS10ZjQzMFJhU2x3TEo1UWZjTjBRVjMwTXhrcnQxcE5DMXNR?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-17T21:24:42Z",
+      "collected_at": "2026-11-19T03:20:22.161385Z"
+    },
+    {
       "id": "d3884305f603c2bd04bbb875",
       "title": "3 Undervalued AI Stocks For November 2026 - Yahoo Finance",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdjR2WFJSVHJPMERWQ2VzZFJqdjBXeTVTWGpOdTZPUVdjNzE1VXJWYi1aRmpjSmlFeXFEV1hQelk1VUJaaXhsQ24ycHZ6OExPcTlGMVJUd204STBJZlNpNVdVSHJ3T3hVZUZSMGs1VHNYRkprRkRTaU10ZVJmUTNsWWtWM0NLbTcwazZ4RjRUcW9vQTdDVmltZDd2WW4?oc=5",
@@ -2686,24 +2704,6 @@
       "source": "Reuters",
       "category": "Mercados",
       "published_at": "2026-11-17T13:13:38Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "ae4b67ffd3e43ba99049b4dd",
-      "title": "Ancla neoliberal del FMI ata PIB abajo de 2% y necesita 4% - Expreso",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQT3QzYnprWHluanhRaDdLMF9jUlpvUnRzWjBBNkZaWTRUX1lJYXd2d3I0bVAzcVdJWDlYWDVyb0lqVzdZNkFHcHNuRDE5ZmtldWt0QzM3TEZsVExSeHhZeTNWdU5JcXhvMmxoWXl1Tkpfa18ySnY4bENYMXY4dW1ZVmFOeHA4TkNEN00yQlAzNmhvQVdN?oc=5",
-      "source": "Expreso",
-      "category": "México",
-      "published_at": "2026-11-17T13:13:00Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "75502278380d3d73c62a783c",
-      "title": "Campo Trión avanza con inversión de 10,434 millones de dólares en Tamaulipas - El Economista",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQYU9ZUHhmX1dmZGNPYVdGQ0VnLUQtMXV5d2VBTE9EdlJ0R1BTRHNVT2RtR3NLR3l2ZVYzWUFuZVNsMTBXdzVnTktoUC1sUVd2b09wd0Y2cTdQLW9La3Q2blBXWEcxVER6TnMxMlR1UW1QUTA1MmI2LVFjeDBZdFhlLXVUV1NNSUhfWlJGZFkyVDNLZXIzNlc4ZmswUGphNXRzY0hWYjNxWDZPNHFVUENUS3JIMzJqcFBucjF4R0MwTzAzd9IBxwFBVV95cUxNMGRKN3MwVlJ2LW56WGxOVFhYbGZIUG84b0xPbUpEUmtGbnVlaDhXNFN2Tk85VHdtVm1xSE9yelRXOTlrN0ZOQklNRFg5QnkyS2xJWFVnODJwRGUzNlpWQVp3WURQeGRlcFBJSENJTHFuVUpUd3dtNC1QdmFPUXFOZHVXQ1k1Z3MwdnVMdndPa192LTN0OU5fU1VHN0JOOFRjUlYzYzJING85X1R1N2JzQ3dtcndHSXc4TUEydDJ6bThlMjhGMUpJ?oc=5",
-      "source": "El Economista",
-      "category": "México",
-      "published_at": "2026-11-17T13:05:00Z",
       "collected_at": "2026-11-19T02:40:59.182388Z"
     }
   ]
