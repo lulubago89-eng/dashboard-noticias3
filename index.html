@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Dashboard Noticias</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eff4f7; --surface: #fff; --field: #f7fafb; --ink: #112d44;
+      --muted: #486175; --line: #d8e3e9; --accent: #00786e; --soft: #e4f5f1;
+      --hero: #0d2a42; --hero-muted: #b7cfdb; --turquoise: #50e1c7;
+      --warning: #7d4b06; --warning-bg: #fff5df; --danger: #912c3d; --danger-bg: #fff0f2;
+      --shadow: 0 3px 10px #102b4010;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0a1825; --surface: #112638; --field: #0d2030; --ink: #eaf6fb;
+      --muted: #a9c3d1; --line: #2c485d; --accent: #64e6cd; --soft: #123d3d;
+      --hero: #102f48; --hero-muted: #bfd6e0; --turquoise: #64e6cd;
+      --warning: #ffda91; --warning-bg: #372d1c; --danger: #ffb4bf; --danger-bg: #402430;
+      --shadow: 0 3px 10px #0002;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.5 system-ui, "Segoe UI", sans-serif; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: default; opacity: .55; }
+    a { color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    h1, h2, h3, p { margin: 0; }
+    .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 100vh; }
+    .sidebar { background: #091e31; color: #eef9fc; padding: 27px 16px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-size: .94rem; font-weight: 750; padding: 0 5px 23px; border-bottom: 1px solid #294355; }
+    .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; flex: 0 0 36px; border: 1px solid #3d827f; border-radius: 9px; color: var(--turquoise); background: #123a47; }
+    .icon { width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .sidebar nav { display: grid; gap: 5px; margin-top: 22px; }
+    .nav-button { display: flex; align-items: center; gap: 11px; width: 100%; padding: 10px 11px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: #bed4df; text-align: left; font-size: .9rem; white-space: nowrap; }
+    .nav-button:hover { background: #142f43; color: #fff; }
+    .nav-button[aria-current="true"] { background: #153b4b; border-color: #29616a; color: var(--turquoise); font-weight: 700; }
+    .sidebar :focus-visible, .hero :focus-visible { outline-color: var(--turquoise); }
+    main { width: 100%; max-width: 1640px; margin-inline: auto; padding: 26px clamp(16px, 3.2vw, 45px) 44px; min-width: 0; }
+    .hero { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: clamp(20px, 3vw, 36px); border: 1px solid #284b60; border-radius: 16px; background: linear-gradient(108deg, var(--hero) 35%, #143a50); color: #fff; box-shadow: var(--shadow); }
+    .hero h1 { font-size: clamp(1.85rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -.045em; }
+    .collection { margin-top: 12px; color: var(--hero-muted); font-size: .875rem; }
+    .collection strong { color: #fff; font-weight: 650; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .button { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--surface); color: var(--ink); font-weight: 680; font-size: .875rem; }
+    .button:hover:enabled { border-color: var(--accent); color: var(--accent); }
+    .hero .button { background: #183c51; border-color: #507084; color: #f1fafc; }
+    .hero .button:hover:enabled { border-color: var(--turquoise); color: var(--turquoise); }
+    .hero .primary { color: #082b32; background: var(--turquoise); border-color: var(--turquoise); }
+    .hero .primary:hover:enabled { color: #082b32; background: #a4f4e5; }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .metric, .panel, .notice { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+    .metric { position: relative; padding: 15px 16px; min-width: 0; border-top: 3px solid var(--accent); }
+    .metric-label { color: var(--muted); font-size: .875rem; font-weight: 640; }
+    .metric-value { font-size: clamp(1.4rem, 3vw, 2.15rem); line-height: 1.18; letter-spacing: -.04em; font-weight: 760; margin-top: 5px; overflow-wrap: anywhere; }
+    .mono { font-variant-numeric: tabular-nums; }
+    .notice { margin-top: 16px; padding: 13px 16px; color: var(--muted); overflow-wrap: anywhere; }
+    .notice[data-tone="warning"] { background: var(--warning-bg); color: var(--warning); border-color: currentColor; }
+    .notice[data-tone="danger"] { background: var(--danger-bg); color: var(--danger); border-color: currentColor; }
+    .notice details { margin-top: 7px; }
+    .notice summary { cursor: pointer; font-weight: 650; }
+    .notice ul { margin: 6px 0 0; padding-inline-start: 1.4em; }
+    .panel { padding: clamp(14px, 2vw, 21px); min-width: 0; }
+    .filters { margin-top: 16px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(160px, 1.6fr) repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .filter-grid label { display: grid; align-content: start; min-width: 0; gap: 5px; font-size: .875rem; font-weight: 650; }
+    .filter-grid input, .filter-grid select { width: 100%; min-width: 0; min-height: 42px; color: var(--ink); background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 8px; font-size: .875rem; }
+    .filter-grid select { appearance: none; padding-inline-end: 27px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23728e9c' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 9px center; background-size: 11px; }
+    .filter-grid input::placeholder { color: var(--muted); }
+    .filter-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; }
+    .filter-footer p { color: var(--danger); font-size: .875rem; }
+    .filter-footer .button { margin-inline-start: auto; }
+    .content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(255px, .46fr); align-items: start; gap: 16px; margin-top: 16px; }
+    .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    h2 { font-size: 1.15rem; letter-spacing: -.018em; }
+    .secondary { color: var(--muted); font-size: .875rem; }
+    .article-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 9px; }
+    .article { padding: 13px 14px; border: 1px solid var(--line); background: var(--field); border-radius: 9px; overflow-wrap: anywhere; }
+    .article:hover { border-color: var(--accent); }
+    .article-meta { display: flex; align-items: baseline; gap: 5px 10px; flex-wrap: wrap; margin-bottom: 5px; font-size: .875rem; color: var(--muted); }
+    .tag { color: var(--accent); background: var(--soft); border-radius: 5px; padding: 2px 7px; font-weight: 700; font-size: .8125rem; }
+    .article h3 { font-size: 1.02rem; line-height: 1.4; }
+    .article h3 a { color: var(--ink); text-decoration: none; }
+    .article h3 a:hover, .article h3 a:focus-visible { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .empty { margin-top: 12px; padding: 20px 16px; border: 1px dashed var(--line); background: var(--field); border-radius: 9px; }
+    .empty h3 { font-size: 1rem; }
+    .empty p { margin-top: 5px; color: var(--muted); font-size: .9rem; }
+    .workflow { font-weight: 650; }
+    .chart { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 13px; }
+    .chart-label { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; font-size: .875rem; }
+    .chart-label strong { overflow-wrap: anywhere; }
+    .bar { height: 7px; background: var(--soft); border-radius: 20px; overflow: hidden; }
+    .bar span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+    .chart-empty { margin-top: 12px; }
+    @media (max-width: 1190px) { .filter-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } .search { grid-column: 1 / -1; } }
+    @media (max-width: 930px) { .shell { grid-template-columns: 190px minmax(0, 1fr); } .content { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) {
+      .shell { display: block; } .sidebar { padding: 10px 13px; } .brand { padding: 0 0 8px; } .brand-mark { width: 30px; height: 30px; flex-basis: 30px; }
+      .sidebar nav { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; } .nav-button { width: auto; gap: 5px; padding: 7px 8px; } .nav-button .icon { width: 14px; height: 14px; }
+      main { padding-top: 15px; } .filter-grid, .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 365px) { .filter-grid { grid-template-columns: 1fr; } .search { grid-column: auto; } }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 13h4l3-7 4 12 3-5h4"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+    <symbol id="i-market" viewBox="0 0 24 24"><path d="M4 4v16h16M7 15l5-5 4 2 4-5"/></symbol>
+    <symbol id="i-politics" viewBox="0 0 24 24"><path d="M3 9h18l-9-5-9 5Zm1 11h16M7 10v7m5-7v7m5-7v7"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 0 0-14-2L3 9m0-5v5h5m-4 7a8 8 0 0 0 14 2l3-3m0 5v-5h-5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></symbol>
+    <symbol id="i-theme" viewBox="0 0 24 24"><path d="M20 15a8 8 0 0 1-11-11 8.5 8.5 0 1 0 11 11Z"/></symbol>
+  </svg>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span>Dashboard Noticias</div>
+      <nav aria-label="Secciones">
+        <button type="button" class="nav-button" data-category="" aria-current="true"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Vista general</button>
+        <button type="button" class="nav-button" data-category="México"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>México</button>
+        <button type="button" class="nav-button" data-category="Estados Unidos"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Estados Unidos</button>
+        <button type="button" class="nav-button" data-category="Mercados"><svg class="icon" aria-hidden="true"><use href="#i-market"/></svg>Mercados</button>
+        <button type="button" class="nav-button" data-category="Política"><svg class="icon" aria-hidden="true"><use href="#i-politics"/></svg>Política</button>
+      </nav>
+    </aside>
+    <main>
+      <header class="hero">
+        <div>
+          <h1>Dashboard Noticias</h1>
+          <p class="collection">Última recopilación · <strong id="collection">Consultando…</strong></p>
+        </div>
+        <div class="actions">
+          <button id="theme" type="button" class="button"><svg class="icon" aria-hidden="true"><use href="#i-theme"/></svg><span id="theme-label">Modo oscuro</span></button>
+          <button id="export" type="button" class="button" disabled><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Exportar CSV</button>
+          <button id="refresh" type="button" class="button primary"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg><span id="refresh-label">Refresh</span></button>
+        </div>
+      </header>
+
+      <section class="metrics mono" aria-label="Indicadores de la recopilación">
+        <div class="metric"><p class="metric-label">Titulares disponibles</p><p id="metric-total" class="metric-value">—</p></div>
+        <div class="metric"><p class="metric-label">Nuevos en la recopilación</p><p id="metric-new" class="metric-value">—</p></div>
+        <div class="metric"><p class="metric-label">Fuentes consultadas con éxito</p><p id="metric-sources" class="metric-value">—</p></div>
+        <div class="metric"><p class="metric-label">Temas con titulares</p><p id="metric-categories" class="metric-value">—</p></div>
+      </section>
+
+      <section id="notice" class="notice" aria-label="Estado de la recopilación" hidden>
+        <p id="notice-text" role="status"></p>
+        <details id="notice-details" hidden><summary>Ver incidencias de las fuentes</summary><ul id="notice-errors"></ul></details>
+      </section>
+
+      <section class="panel filters" aria-label="Filtros de titulares">
+        <div class="filter-grid">
+          <label class="search">Buscar <input id="search" type="search" placeholder="Titular, fuente o tema" autocomplete="off"></label>
+          <label>Categoría <select id="category"><option value="">Todas</option></select></label>
+          <label>Fuente <select id="source"><option value="">Todas</option></select></label>
+          <label>Publicado desde <input id="from" type="date" aria-describedby="date-error"></label>
+          <label>Publicado hasta <input id="to" type="date" aria-describedby="date-error"></label>
+        </div>
+        <div class="filter-footer"><p id="date-error" role="status" hidden>La fecha final debe ser igual o posterior a la inicial.</p><button id="reset" type="button" class="button" disabled>Limpiar filtros</button></div>
+      </section>
+
+      <div class="content">
+        <section id="feed" class="panel" aria-labelledby="feed-heading">
+          <div class="panel-head"><h2 id="feed-heading">Titulares</h2><p id="result-count" class="secondary mono" role="status"></p></div>
+          <div id="empty" class="empty">
+            <h3 id="empty-title">Cargando noticias…</h3>
+            <p id="empty-text" hidden></p>
+            <p id="workflow" hidden>En GitHub, abre el repositorio y sigue esta ruta<br><span class="workflow">Actions › Actualizar noticias y publicar dashboard › Run workflow › Run workflow</span><br>Cuando el flujo termine y se publique el archivo, pulsa <strong>Refresh</strong>.</p>
+          </div>
+          <ul id="articles" class="article-list" hidden></ul>
+        </section>
+        <section class="panel" aria-labelledby="chart-heading">
+          <h2 id="chart-heading">Distribución temática</h2>
+          <p class="secondary">Según los titulares filtrados</p>
+          <p id="chart-empty" class="secondary chart-empty" hidden>No hay titulares para graficar.</p>
+          <ul id="chart" class="chart" aria-label="Titulares y porcentaje por categoría"></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script>
+    'use strict';
+
+    const byId = id => document.getElementById(id);
+    const navButtons = [...document.querySelectorAll('.nav-button')];
+    const sections = navButtons.map(button => button.dataset.category).filter(Boolean);
+    const statuses = ['pending', 'ok', 'partial', 'error'];
+    const filters = {
+      search: byId('search'), category: byId('category'), source: byId('source'),
+      from: byId('from'), to: byId('to')
+    };
+    const number = new Intl.NumberFormat('es-MX');
+    const percent = new Intl.NumberFormat('es-MX', { style: 'percent', maximumFractionDigits: 1 });
+    const dateTime = new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium', timeStyle: 'short' });
+    const dateOnly = new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium', timeZone: 'UTC' });
+    const alphabetical = new Intl.Collator('es-MX');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    let themePreference;
+    let snapshot = null;
+    let visibleArticles = [];
+    let loading = false;
+    let readError = '';
+
+    try { themePreference = localStorage.getItem('dashboard-noticias-theme'); } catch { /* Storage is optional. */ }
+
+    function renderTheme() {
+      const dark = themePreference === 'dark' || (themePreference !== 'light' && systemTheme.matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      byId('theme-label').textContent = dark ? 'Modo claro' : 'Modo oscuro';
+    }
+
+    function make(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    const normalize = value => value.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
+    const clean = value => typeof value === 'string' ? value.trim() : '';
+    const isoDateOnly = /^\d{4}-\d{2}-\d{2}$/;
+    const parsedTime = value => value ? Date.parse(value) : NaN;
+    const countIsValid = value => Number.isInteger(value) && value >= 0;
+
+    function localDay(value) {
+      if (isoDateOnly.test(value)) return value;
+      const time = parsedTime(value);
+      if (!Number.isFinite(time)) return '';
+      const date = new Date(time);
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${date.getFullYear()}-${month}-${day}`;
+    }
+
+    function formatDate(value, fallback) {
+      const time = parsedTime(value);
+      if (!Number.isFinite(time)) return fallback;
+      return isoDateOnly.test(value) ? dateOnly.format(time) : dateTime.format(time);
+    }
+
+    function decodeSnapshot(data) {
+      if (!data || !statuses.includes(data.status) || !Array.isArray(data.articles) ||
+          !Array.isArray(data.errors) || ![data.sources_ok, data.sources_total, data.new_articles].every(countIsValid)) {
+        throw new Error('noticias.json tiene una estructura distinta a la esperada.');
+      }
+      if (data.articles.some(article => !article || typeof article.title !== 'string')) {
+        throw new Error('noticias.json contiene registros de titulares inválidos.');
+      }
+      const articles = data.articles.map(article => {
+        const published = clean(article.published_at);
+        const collected = clean(article.collected_at);
+        const source = clean(article.source) || 'Fuente sin identificar';
+        const rawCategory = clean(article.category);
+        const category = sections.find(section => normalize(section) === normalize(rawCategory)) || rawCategory || 'Sin categoría';
+        const title = clean(article.title) || 'Titular sin título';
+        const publicationTime = parsedTime(published);
+        const order = Number.isFinite(publicationTime) ? publicationTime : parsedTime(collected);
+        return {
+          id: article.id, title, source, category, published, collected, url: clean(article.url),
+          day: localDay(published), order: Number.isFinite(order) ? order : -Infinity,
+          searchText: normalize(`${title} ${source} ${category}`)
+        };
+      });
+      articles.sort((a, b) => b.order - a.order || alphabetical.compare(a.title, b.title));
+      return { ...data, articles };
+    }
+
+    function setOptions(select, values) {
+      const previous = select.value;
+      const options = values.map(value => {
+        const option = make('option', '', value);
+        option.value = value;
+        return option;
+      });
+      select.replaceChildren(select.options[0], ...options);
+      if (values.includes(previous)) select.value = previous;
+    }
+
+    function updateOptions() {
+      const articles = snapshot?.articles ?? [];
+      const extra = [...new Set(articles.map(article => article.category))].filter(category => !sections.includes(category));
+      const sources = [...new Set(articles.map(article => article.source))];
+      setOptions(filters.category, [...sections, ...extra.sort(alphabetical.compare)]);
+      setOptions(filters.source, sources.sort(alphabetical.compare));
+    }
+
+    function renderSummary() {
+      byId('collection').textContent = snapshot
+        ? formatDate(snapshot.generated_at, 'Sin fecha registrada')
+        : loading ? 'Consultando…' : 'No disponible';
+      const metrics = snapshot ? [
+        number.format(snapshot.articles.length), number.format(snapshot.new_articles),
+        `${number.format(snapshot.sources_ok)} / ${number.format(snapshot.sources_total)}`,
+        number.format(new Set(snapshot.articles.map(article => article.category)).size)
+      ] : ['—', '—', '—', '—'];
+      ['total', 'new', 'sources', 'categories'].forEach((key, index) => {
+        byId(`metric-${key}`).textContent = metrics[index];
+      });
+
+      const messages = [];
+      let tone = '';
+      if (readError) {
+        tone = 'danger';
+        messages.push(readError);
+        if (snapshot) messages.push('Se muestran los últimos datos cargados en esta pestaña.');
+      }
+      if (snapshot?.status === 'error') {
+        tone = 'danger';
+        messages.push('La última recopilación reportó un error.');
+      } else if (snapshot?.status === 'partial') {
+        tone ||= 'warning';
+        messages.push(`Recopilación parcial. Respondieron ${number.format(snapshot.sources_ok)} de ${number.format(snapshot.sources_total)} fuentes.`);
+      } else if (snapshot?.status === 'pending') {
+        messages.push('Recopilación pendiente.');
+      }
+      const errors = (snapshot?.errors ?? []).filter(error => typeof error === 'string' && error.trim());
+      byId('notice').hidden = !messages.length && !errors.length;
+      byId('notice').dataset.tone = tone;
+      byId('notice-text').textContent = messages.join(' ');
+      byId('notice-details').hidden = !errors.length;
+      byId('notice-errors').replaceChildren(...errors.map(error => make('li', '', error)));
+    }
+
+    function originalUrl(value) {
+      try {
+        const url = new URL(value);
+        if (url.protocol === 'https:' || url.protocol === 'http:') return url.href;
+      } catch { /* An invalid URL leaves the title as plain text. */ }
+      return '';
+    }
+
+    function articleCard(article) {
+      const card = make('article', 'article');
+      const meta = make('div', 'article-meta');
+      const hasDate = Number.isFinite(parsedTime(article.published));
+      const date = make(hasDate ? 'time' : 'span', 'mono', formatDate(article.published, 'Sin fecha de publicación'));
+      if (hasDate) date.dateTime = article.published;
+      meta.append(make('span', 'tag', article.category), make('span', '', article.source), date);
+      const heading = make('h3');
+      const url = originalUrl(article.url);
+      if (url) {
+        const link = make('a', '', article.title);
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        heading.append(link);
+      } else {
+        heading.textContent = article.title;
+      }
+      card.append(meta, heading);
+      const item = make('li');
+      item.append(card);
+      return item;
+    }
+
+    function renderChart(articles) {
+      const counts = new Map();
+      articles.forEach(article => counts.set(article.category, (counts.get(article.category) ?? 0) + 1));
+      const rows = [...counts].sort((a, b) => b[1] - a[1] || alphabetical.compare(a[0], b[0])).map(([category, count]) => {
+        const row = make('li');
+        const label = make('div', 'chart-label');
+        const share = count / articles.length;
+        label.append(make('strong', '', category), make('span', 'secondary mono', `${number.format(count)} · ${percent.format(share)}`));
+        const bar = make('div', 'bar');
+        bar.setAttribute('aria-hidden', 'true');
+        const fill = make('span');
+        fill.style.width = `${100 * share}%`;
+        bar.append(fill);
+        row.append(label, bar);
+        return row;
+      });
+      byId('chart').replaceChildren(...rows);
+      byId('chart-empty').hidden = !!articles.length || (!snapshot && loading);
+    }
+
+    function renderArticles() {
+      const query = normalize(filters.search.value.trim());
+      const { value: category } = filters.category;
+      const { value: source } = filters.source;
+      const { value: from } = filters.from;
+      const { value: to } = filters.to;
+      const invalidRange = Boolean(from && to && from > to);
+      byId('date-error').hidden = !invalidRange;
+      filters.to.setAttribute('aria-invalid', String(invalidRange));
+      byId('reset').disabled = !Object.values(filters).some(filter => filter.value);
+      navButtons.forEach(button => {
+        if (button.dataset.category === category) button.setAttribute('aria-current', 'true');
+        else button.removeAttribute('aria-current');
+      });
+
+      visibleArticles = invalidRange ? [] : (snapshot?.articles ?? []).filter(article =>
+        (!category || article.category === category) && (!source || article.source === source) &&
+        (!query || article.searchText.includes(query)) &&
+        ((!from && !to) || (article.day && (!from || article.day >= from) && (!to || article.day <= to)))
+      );
+      const total = snapshot?.articles.length ?? 0;
+      const result = visibleArticles.length;
+      byId('feed-heading').textContent = category ? `Titulares de ${category}` : 'Titulares';
+      byId('result-count').textContent = snapshot && !invalidRange ? `${number.format(result)} de ${number.format(total)}` : '';
+      byId('export').disabled = !result;
+      byId('articles').hidden = !result;
+      byId('articles').replaceChildren(...visibleArticles.map(articleCard));
+      byId('empty').hidden = !!result;
+
+      let title = '';
+      let detail = '';
+      if (!result) {
+        if (!snapshot && loading) title = 'Cargando noticias…';
+        else if (!snapshot) {
+          title = 'No se pudieron cargar las noticias';
+          detail = 'Abre la página de GitHub Pages y verifica que noticias.json esté publicado junto a index.html. Pulsa Refresh para volver a leer el archivo.';
+        } else if (!total) {
+          title = snapshot.status === 'pending' ? 'Aún no se han recopilado noticias' : 'No hay noticias recopiladas en el archivo';
+        } else if (invalidRange) title = 'Corrige el intervalo de publicación';
+        else {
+          title = 'No hay titulares para estos filtros';
+          detail = 'Cambia los filtros o pulsa Limpiar filtros para volver a ver todos los titulares.';
+        }
+      }
+      byId('empty-title').textContent = title;
+      byId('empty-text').textContent = detail;
+      byId('empty-text').hidden = !detail;
+      byId('workflow').hidden = !snapshot || total > 0;
+      renderChart(visibleArticles);
+    }
+
+    async function refresh() {
+      if (loading) return;
+      loading = true;
+      readError = '';
+      byId('refresh').disabled = true;
+      byId('refresh-label').textContent = 'Leyendo…';
+      byId('feed').setAttribute('aria-busy', 'true');
+      renderSummary();
+      if (!snapshot) renderArticles();
+      try {
+        const response = await fetch('./noticias.json?t='+Date.now(), {cache:'no-store'});
+        if (!response.ok) throw new Error(`No se pudo leer noticias.json (HTTP ${response.status}).`);
+        let data;
+        try { data = await response.json(); }
+        catch { throw new Error('noticias.json no se pudo interpretar como JSON.'); }
+        snapshot = decodeSnapshot(data);
+        updateOptions();
+      } catch (error) {
+        readError = error instanceof TypeError ? 'No se pudo conectar para leer noticias.json.' : error.message;
+      } finally {
+        loading = false;
+        byId('refresh').disabled = false;
+        byId('refresh-label').textContent = 'Refresh';
+        byId('feed').setAttribute('aria-busy', 'false');
+        renderSummary();
+        renderArticles();
+      }
+    }
+
+    function csvCell(value) {
+      let text = String(value ?? '');
+      // Protect spreadsheet users from formula-like publisher data.
+      if (/^(?:\s*[=+@-]|[\t\r\n])/.test(text)) text = `'${text}`;
+      return `"${text.replace(/"/g, '""')}"`;
+    }
+
+    function exportCsv() {
+      if (!visibleArticles.length) return;
+      const rows = [['ID', 'Titular', 'Fuente', 'Categoría', 'Publicado', 'Recopilado', 'Enlace']];
+      visibleArticles.forEach(article => rows.push([
+        article.id, article.title, article.source, article.category, article.published, article.collected, originalUrl(article.url)
+      ]));
+      const csv = '\uFEFF' + rows.map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n';
+      const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+      const download = make('a');
+      download.href = url;
+      download.download = 'dashboard-noticias.csv';
+      document.body.append(download);
+      download.click();
+      download.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    byId('theme').addEventListener('click', () => {
+      themePreference = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('dashboard-noticias-theme', themePreference); } catch { /* Storage is optional. */ }
+      renderTheme();
+    });
+    systemTheme.addEventListener('change', renderTheme);
+    navButtons.forEach(button => button.addEventListener('click', () => {
+      filters.category.value = button.dataset.category;
+      renderArticles();
+    }));
+    filters.search.addEventListener('input', renderArticles);
+    [filters.category, filters.source, filters.from, filters.to].forEach(filter => filter.addEventListener('change', renderArticles));
+    byId('reset').addEventListener('click', () => {
+      Object.values(filters).forEach(filter => { filter.value = ''; });
+      renderArticles();
+      filters.search.focus();
+    });
+    byId('refresh').addEventListener('click', refresh);
+    byId('export').addEventListener('click', exportCsv);
+    renderTheme();
+    updateOptions();
+    refresh();
+  </script>
+</body>
+</html>
