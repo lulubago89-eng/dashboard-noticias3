@@ -1,11 +1,38 @@
 {
-  "generated_at": "2026-11-19T02:49:09.530787Z",
+  "generated_at": "2026-11-19T03:17:25.883196Z",
   "status": "ok",
   "sources_ok": 13,
   "sources_total": 13,
-  "new_articles": 91,
+  "new_articles": 97,
   "errors": [],
   "articles": [
+    {
+      "id": "561bd1ef2632f2e0d0983061",
+      "title": "SpaceX’s December Lock-Up Frees Another 17% of Its Shares. Here’s What October’s Unlock Did to the Stock.",
+      "url": "https://www.fool.com/investing/2026/11/18/spacex-s-december-lock-up-frees-another-17-of-its-shares-here-s-what-october-s-unlock-did-to-the-stock/?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T02:55:02Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
+    },
+    {
+      "id": "6024d6913a32e2791d1f2dc1",
+      "title": "Asian stocks drop as Anthropic's record IPO fails to reassure",
+      "url": "https://finance.yahoo.com/markets/world-indices/articles/asian-stocks-drop-anthropics-record-025108034.html?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T02:51:08Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
+    },
+    {
+      "id": "41df100269998dda4a3ae4ff",
+      "title": "Coatue Builds $1.8 Billion Salesforce Stake, Its Biggest New Bet, as the Stock Sinks 17%",
+      "url": "https://247wallst.com/investing/2026/11/18/coatue-builds-1-8-billion-salesforce-stake-its-biggest-new-bet-as-the-stock-sinks-17/?.tsrc=rss",
+      "source": "Yahoo Finance / Acciones",
+      "category": "Mercados",
+      "published_at": "2026-11-19T02:47:06Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
+    },
     {
       "id": "4f0ccdd92e1cdda3a7310b8e",
       "title": "Dow Jones Futures Rise; Anthropic IPO Prices High, Palo Alto And Everpure Rally On Earnings",
@@ -68,6 +95,15 @@
       "category": "Mercados",
       "published_at": "2026-11-19T02:10:44Z",
       "collected_at": "2026-11-19T02:40:59.182388Z"
+    },
+    {
+      "id": "af9c3c1630e38f7539e3afca",
+      "title": "‘Nothing Wrong With NVDA Or AI Trade’: Kenny Polcari Says Fed’s Inflation Concerns Are The Bigger Market Risk - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOM3hwb0M2TTBPVVprQkxURVdJRWZKNlVEb0Uwa25oM3o2RmhEVDBaYWczMkc3X0Z3ZmhpOHRxeFFONE1lZm8zd21vSmpiUXBiWWtsWnlwZUhVaWJIeDFGQ2kwZC1yWENHT0tvejlEZC1SSlg4MXNNcVNtcWFVdDJiODR2eHJZeEJaYUM2UzlQcVdTTWxWQW5hc3RoTGxKSEpZZUNKbU5VM2lKcVZqbGNPYnNJWENjMVJYRkJWaW9pQVVWaXFNUmVsbU0wNS1wdzM0TWd0Mk90bWdVemp1WU1vZVRBZ2JicnNtY3FPa19lNTNHZkNuZEsxb1oydw?oc=5",
+      "source": "TradingView",
+      "category": "Estados Unidos",
+      "published_at": "2026-11-19T02:10:00Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
     },
     {
       "id": "a444c93b3864fced20a302c2",
@@ -880,6 +916,15 @@
       "collected_at": "2026-11-19T02:40:59.182388Z"
     },
     {
+      "id": "563eeed556d907ab65161583",
+      "title": "Banxico: México paga comisión de 27 millones de dólares al FMI tras la reducción de su línea de crédito - Diario de Yucatán",
+      "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNWDhvdXdmeVJMeW5KYzFTN0ZqTGVkaHp5V3dZRk5YSUUycU4wekVvUWtxQWl5Snl6ZFh6YVZxRUNPNUJmWWNrV0hSV0R0djdqOV9RRVFNc29UdUw5SjQ2WmNneFRTVy1tb1pCNEgyM1l4ZWxUcndsbFltVnR4cnhiTVZvS1dPTElYSXVhRzFPemZJMnlHZllwazU3QUYzZm5DcmkwMTc5NTY5SE5SX1NJWEplT3Q2WjdCcEY2NFBPWVcwU1NkTmNmcGVZT1NjWWFwdlNZNGNaSkt0ZFNmMDZzd3BJSU94cHVZTl9WSQ?oc=5",
+      "source": "Diario de Yucatán",
+      "category": "México",
+      "published_at": "2026-11-18T19:00:07Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
+    },
+    {
       "id": "c0c4ef66e0d9307c0568eff5",
       "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026",
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
@@ -1013,6 +1058,15 @@
       "category": "Mercados",
       "published_at": "2026-11-18T17:35:47Z",
       "collected_at": "2026-11-19T02:40:59.182388Z"
+    },
+    {
+      "id": "dd769ee628b8304ae4530ba0",
+      "title": "ARKK Is Down, But These 10 Cathie Wood Stocks Have Soared Up to 285% in 2026 - Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPeldHbV9nVFFxRTFsZE1mV3JwRllFTm55eHhWcjdlUXJYOGxZeXdqWkNoREU1UHZTNEVjSDZkU1FnRi1fNzRYUVpqOUw2eWJlcGlQVkFSYzJmalF4bm1scEFsSEFHZHBkYjdDTUZMRnJJMHhXTTNsV1pFNEVuel81REdLSFpIaTVBSmxfOTNibEswOW8?oc=5",
+      "source": "Yahoo Finance",
+      "category": "Mercados",
+      "published_at": "2026-11-18T17:31:03Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
     },
     {
       "id": "cc0e7a92efa226b77b329fd1",
@@ -1715,6 +1769,15 @@
       "category": "Mercados",
       "published_at": "2026-11-18T06:41:00Z",
       "collected_at": "2026-11-19T02:40:59.182388Z"
+    },
+    {
+      "id": "3c1ee67f9472372fd3fff27d",
+      "title": "APEC 2026: Canadá y México ante China - El Economista",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPc0gyR2hMdGhGZTZWaUtkMHBKN0ROUm93eUdreXhzVHlLd2FIWF9FVHJNdVRuSmppS2tOVVdHampGQ280dTNYSnA5ZVR5MDBvdEdPQTl3R1VtRnBJLXZnMV9vRm4tTk9DWUZ2VmlsMHk5U3NzQ1A0c1RfdzBGQ2JjbnFKVXdTb1lObHB0S2pYU0I0RjZC0gGaAUFVX3lxTFBhNG5LbVU5c0hwYnkyQ1BrdGhZSkp3eHBDR1ZIOUtDQXFfX2Ruc2t5YnZJQmVtelZHWmdBRVZsRXI1V18xZjl6YVdVLTNEVUZ4SFBLM2Fwc3dLTU9iRWZGRUx0QWo1US1DNWpoN3B5MUhIMWJBODQ4RTA1b1ZNdzRNa1J0bnR3Z0l0eERaSlV3a1VMeWIxTmxBS0E?oc=5",
+      "source": "El Economista",
+      "category": "México",
+      "published_at": "2026-11-18T06:28:03Z",
+      "collected_at": "2026-11-19T03:17:25.883196Z"
     },
     {
       "id": "ef0a51206fbb4d37ada5f3c0",
@@ -2641,69 +2704,6 @@
       "source": "El Economista",
       "category": "México",
       "published_at": "2026-11-17T13:05:00Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "7af243aaa7e0f10bc08b1077",
-      "title": "Ukraine damages Putin’s prized Crimea bridge as Zelenskyy lauds ‘unprecedented operation’",
-      "url": "https://www.cnbc.com/2026/11/17/kerch-bridge-ukraine-russia-putin-kyiv.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T12:48:14Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "bf592496fd51d0dd5d965760",
-      "title": "Acciones de Deutsche Bank caen más de 6% tras noticias sobre pagos a Epstein y negocios con Rusia - El Economista",
-      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNY2I2TFNsbWVIQmNkdWR2MjB4SW1FaFlJcVA0bXI5a2VHTTFsdWVBdk1JMWFlNklFOU1tME9KR0ktNFJFX1E5RlZZazdHdFFNdTBtU0ZqSTZfdkhmSUdZSzh5dmFqOEl6Z3JreTNQWUl4RlR3aEpSeFV4S19ZYTRHTVRRcnlFTV9WV0ZMQUJYS01sdFQ1QkpydVZsdmlKS05tTVRsTWppYTNTeERUc3NEaFc2aE1Ddnk2X0lXb1N5RDJrejlzVk1BMF9PekFTbTBY0gHWAUFVX3lxTE9SN09qN0ViQllZZ2h3R2NzNzZyX3lUNXItdEVJUW5EMDBGdEJDM01WTk41elBveVNIYXJPYXR0TUZjMjVEaEo1MGlhbF9IVzN5aFZTWTdwSldUa0lXdTkyM1VrRWgzdG91MTJxZ2pqYUROSGxFVldmYjhtejA2bU9BRDRwTlFzLWpJSy1QeDVTbWFCdHA4MTIzU0t1azg5ZW1oNlVPazlNSTZKSnl0OW5LbnNMRUlPUFVtckNvYm53U0xjemxtaHZ4ekZGenFiUDUtMkFQUHc?oc=5",
-      "source": "El Economista",
-      "category": "México",
-      "published_at": "2026-11-17T12:13:10Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "a9acffc654114bd527559548",
-      "title": "COMMENTARY: Morning Bid: Chip wreck - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQQmNFTVpRdjJEQ0FMbGZEWkZybUZQSHY1cG91MVZlZU0xY1RtRzFNLTc0U3Nnc3VhcXFnTHRGejY1Y3hrekczYTZXNkEzLVJWenhLbjIzUm81UWQwOXZ3NzlEYlBKeDFfNzVHRG5SSWhyMHBhd1RtMnZCeUtnLUZEOFN4UGVpQzdXN3ppNldnY01CaXFsbm40?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:40:04Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "0bb5bf1cd03f4e4f7662c9b2",
-      "title": "Investors slashed tech exposure allocations by most since 2006 - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9hUzk5NzA2a0JXelk4ZWhJcFpPT3Q2NWxVa3Bmdl9lUUhTaDZVQ0pFRTZ2WTRkVFRGQWNzenhrN2FaWkJzM0NBMTZEU3dLMHJTRHBWd21XSnhmcXQ2cmRHSWpBOUxwV2F0c2dGZENCZTBmekpuRXRzVkJxcw?oc=5",
-      "source": "Reuters",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:35:04Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "dbd80f052d6bcb1e32724666",
-      "title": "Iran escalates threats as third U.S. carrier arrives in Middle East, tanker struck in Hormuz",
-      "url": "https://www.cnbc.com/2026/11/17/iran-war-trump-hormuz-oil-.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T11:22:54Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "fa49644999356d8d2e97cb0f",
-      "title": "CoreWeave Answered the Biggest Question About AI Stocks. Now Nvidia Has to Confirm It. - Yahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNVzZjUENLaFJGZFYwYU55TVA2aHNUTUZtbm5WemlRT2lEa3ljTzA1NElvVXI1eDYtODR1MU9MQnVZUm9JOENvLU5DWm5Jb2FBbVBybFl6TmdsUzZtZkp1S0JRMThIZXU2WGlianR6blNJemJveWJkUmxsSjRqeGRBeHdJdkN2QUVNZ2w1SlNfamJFNEsweFVJeURLRUZydnh6UG13?oc=5",
-      "source": "Yahoo Finance",
-      "category": "Mercados",
-      "published_at": "2026-11-17T11:03:01Z",
-      "collected_at": "2026-11-19T02:40:59.182388Z"
-    },
-    {
-      "id": "659a2d85aa22cdfbc606a11e",
-      "title": "JD Vance says he'll decide 'sometime next year' about 2028 presidential run",
-      "url": "https://www.cnbc.com/2026/11/17/jd-vance-2028-presidential-run-decision.html",
-      "source": "CNBC / Politics",
-      "category": "Política",
-      "published_at": "2026-11-17T10:40:56Z",
       "collected_at": "2026-11-19T02:40:59.182388Z"
     }
   ]
